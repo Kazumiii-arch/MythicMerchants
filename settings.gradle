@@ -1,0 +1,2 @@
+// This file sets the root project name for the build
+rootProject.name = 'MythicMerchants'
