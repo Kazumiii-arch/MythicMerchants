@@ -9,9 +9,9 @@
     <name>MythicMerchants</name>
     <description>A complete, professional merchant solution with reputation, dynamic economy, and advanced spawning.</description>
     <properties>
-        <!-- The corrected Java version. Changed from 1.17 to 17 -->
-        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- We keep this property, but the key change is in the plugin below -->
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
     <repositories>
         <repository>
@@ -51,13 +51,15 @@
         <finalName>${project.name}-v${project.version}</finalName>
         <defaultGoal>clean package</defaultGoal>
         <plugins>
+            <!-- THIS SECTION IS THE IMPORTANT CHANGE -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <!-- This 'release' tag is a more modern and reliable way -->
+                    <!-- to set the Java version than 'source' and 'target'. -->
+                    <release>17</release>
                 </configuration>
             </plugin>
             <plugin>
