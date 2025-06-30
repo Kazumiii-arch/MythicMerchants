@@ -1,0 +1,13 @@
+settings:
+  display-name: '&eCoin Collector'
+  entity-type: WANDERING_TRADER
+  is-stationary: false
+  faction: "EXPLORERS"
+trade-pool:
+  rare_candy:
+    cost:
+      - 'CUSTOM_CURRENCY:25'
+    result-item: "rO0ABXNyABpvcmcuYnVra2l0LnV0aWwuaW8uWrapperio/1bInp6kHAgABTAADbWFwdAAPTGphdmEvdXRpbC9NYXA7eHBzcgAdb3JnLmJ1a2tpdC5pbnZlbnRvcnkuSXRlbU1ldGG9cQ+kCCVvUwMAAUpAAgh2ZXJzaW9uWwAOTWV0YV9pbnRlcm5hbHI+W0xqYXZhL2xhbmcvU3RyaW5nO1hAAAAAAAABdXIAE1tMamF2YS5sYW5nLlN0cmluZzutjZ2I/jd0AgAAeHAAAAAAdAALZGlzcGxheS1uYW1ldAAOIztEIFJBIHIgZSBDYW5keXQABGxvcmVzcgARamF2YS51dGlsLkFycmF5TGlzdHhpB0h2Zx2GdAwABUkABHNpemV4cAAAAAF3BAAAAAF0ABYjO0YgQSByYXJlIHRyZWF0ISBZOXVtIQB4c3EAfgAIAAAAAB10AAZzdWdhcg=="
+    stock: 3
+    chance: 1.0
+    
