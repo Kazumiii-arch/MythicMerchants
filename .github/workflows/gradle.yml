@@ -19,16 +19,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Grant execute permission to the gradlew wrapper
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      # This step installs the Gradle program onto the virtual machine
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
+      # This step now uses the installed 'gradle' command directly
+      # It does NOT use './gradlew'
       - name: Build with Gradle
-        # This is the most reliable way to build
-        run: ./gradlew build
+        run: gradle build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: MythicMerchants-Plugin
+          # The path to find the final .jar file
           path: build/libs/*.jar
