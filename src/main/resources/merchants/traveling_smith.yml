@@ -1,0 +1,14 @@
+settings:
+  display-name: '&7Traveling Smith'
+  entity-type: VILLAGER
+  villager-profession: TOOLSMITH
+  faction: "ARTISANS"
+trade-pool:
+  diamond_pick_trade:
+    cost:
+      - "DIAMOND:3"
+      - "STICK:2"
+    result-item: "rO0ABXNyABpvcmcuYnVra2l0LnV0aWwuaW8uWrapperio/1bInp6kHAgABTAADbWFwdAAPTGphdmEvdXRpbC9NYXA7eHBzcgAdb3JnLmJ1a2tpdC5pbnZlbnRvcnkuSXRlbU1ldGG9cQ+kCCVvUwMAAUpAAgh2ZXJzaW9uWwAOTWV0YV9pbnRlcm5hbHI+W0xqYXZhL2xhbmcvU3RyaW5nO1hAAAAAAAABdXIAE1tMamF2YS5sYW5nLlN0cmluZzutjZ2I/jd0AgAAeHAAAAAAdAARZGlhbW9uZF9waWNrYXhl"
+    stock: 5
+    chance: 0.8
+    
