@@ -52,8 +52,7 @@ public class MythicMerchants extends JavaPlugin {
         getCommand("reputation").setExecutor(playerCommands);
         getCommand("merchant").setExecutor(playerCommands);
 
-        // --- THIS IS THE IMPORTANT PART ---
-        // This tells the server to actually listen for the events in your listener classes.
+        // Event listener registration
         getServer().getPluginManager().registerEvents(new GUIListener(this), this);
         getServer().getPluginManager().registerEvents(new MerchantListener(this), this);
 
