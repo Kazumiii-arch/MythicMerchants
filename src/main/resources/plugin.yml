@@ -1,0 +1,32 @@
+name: MythicMerchants
+version: 3.0.0
+main: com.mythic.merchants.MythicMerchants
+api-version: 1.18
+author: Kazuumii
+description: A complete, professional merchant solution with reputation, dynamic economy, and advanced spawning.
+
+softdepend: [Vault, ProtocolLib]
+
+commands:
+  merchant:
+    description: Opens the trading GUI for the nearest merchant.
+    aliases: [trade]
+  merchantadmin:
+    description: Opens the main administrative dashboard for the plugin.
+    aliases: [mmadmin, merchantc]
+    usage: /merchantadmin
+  reputation:
+    description: Check your reputation with the various merchant factions.
+    aliases: [rep]
+
+permissions:
+  mythicmerchants.trade:
+    description: Allows players to trade with merchants.
+    default: true
+  mythicmerchants.reputation:
+    description: Allows players to use the /reputation command.
+    default: true
+  mythicmerchants.admin:
+    description: Gives access to the /merchantadmin dashboard.
+    default: op
+    
