@@ -1,0 +1,19 @@
+settings:
+  display-name: '&5Wandering Wizard'
+  entity-type: WANDERING_TRADER
+  faction: "MYSTICS"
+spawn-conditions:
+  biomes:
+    - "DARK_FOREST"
+    - "DEEP_DARK"
+  time: "NIGHT"
+trade-pool:
+  staff_of_lightning:
+    cost:
+      - 'NETHER_STAR:4'
+      - 'VAULT:5000'
+    result-item: "rO0ABXNyABpvcmcuYnVra2l0LnV0aWwuaW8uWrapperio/1bInp6kHAgABTAADbWFwdAAPTGphdmEvdXRpbC9NYXA7eHBzcgAdb3JnLmJ1a2tpdC5pbnZlbnRvcnkuSXRlbU1ldGG9cQ+kCCVvUwMAAUpAAgh2ZXJzaW9uWwAOTWV0YV9pbnRlcm5hbHI+W0xqYXZhL2xhbmcvU3RyaW5nO1hAAAAAAAABdXIAE1tMamF2YS5sYW5nLlN0cmluZzutjZ2I/jd0AgAAeHAAAAAAdAALZGlzcGxheS1uYW1ldAAiIztkIFN0YWZmIG9mIExpZ2h0bmluZyAmYyZsGUNMSUNLXQAEbG9yZXNyABFqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAABdwQAAAABdAAbIztHIFNtb3RlcyB3aXRoIHRoZSBwb3dlciBvZiB0aGUgc3Rvcm0ueHNxAH4ACgAAAAB0AAVibGF6ZV9yb2Q="
+    stock: 1
+    chance: 0.3
+    reputation-required: "HONORED"
+    
