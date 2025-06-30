@@ -61,7 +61,7 @@ public class MerchantManager {
         for (String uuidString : section.getKeys(false)) {
             UUID uuid = UUID.fromString(uuidString);
             Entity entity = Bukkit.getEntity(uuid);
-            if (entity != null) entity.remove(); // Remove old entity if it exists
+            if (entity != null) entity.remove();
             
             String profileId = section.getString(uuidString + ".profileId");
             World world = Bukkit.getWorld(section.getString(uuidString + ".world"));
@@ -90,7 +90,7 @@ public class MerchantManager {
             public void run() {
                 trySpawningRandomMerchant();
             }
-        }.runTaskTimer(plugin, min, max); // Run task repeatedly within the interval
+        }.runTaskTimer(plugin, min, max);
     }
     
     public void trySpawningRandomMerchant() {
@@ -109,7 +109,7 @@ public class MerchantManager {
             if (checkSpawnConditions(profileId, targetPlayer.getLocation())) {
                 int duration = plugin.getConfig().getInt("defaults.duration", 600);
                 spawnMerchant(profileId, findSafeLocation(targetPlayer.getLocation()), duration, false);
-                return; // Spawn one and stop
+                return;
             }
         }
     }
