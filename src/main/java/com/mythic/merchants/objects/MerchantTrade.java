@@ -59,7 +59,7 @@ public class MerchantTrade {
             if(type.equals("VAULT")) {
                  lore.add(ChatColor.DARK_GRAY + "- " + ChatColor.GREEN + "$" + String.format("%,.2f", amount));
             } else if (type.equals("CUSTOM_CURRENCY")) {
-                lore.add(ChatColor.DARK_GRAY + "- " + ChatColor.GOLD + (int)amount + "x Gold Coins"); // Example name
+                lore.add(ChatColor.DARK_GRAY + "- " + ChatColor.GOLD + (int)amount + "x Gold Coins");
             } else {
                  lore.add(ChatColor.DARK_GRAY + "- " + ChatColor.GRAY + (int)amount + "x " + type.replace("_", " "));
             }
@@ -146,8 +146,9 @@ public class MerchantTrade {
         NamespacedKey tradeKey = new NamespacedKey(plugin, "trade_id");
         NamespacedKey profileKey = new NamespacedKey(plugin, "profile_id");
         
-        String tradeId = item.getItemMeta().getPersistentDataContainer().get(tradeKey, PersistentDataType.STRING);
-        String profileId = item.getItemMeta().getPersistentDataContainer().get(profileKey, PersistentDataType.STRING);
+        ItemMeta meta = item.getItemMeta();
+        String tradeId = meta.getPersistentDataContainer().get(tradeKey, PersistentDataType.STRING);
+        String profileId = meta.getPersistentDataContainer().get(profileKey, PersistentDataType.STRING);
         
         if(tradeId == null || profileId == null) return null;
 
