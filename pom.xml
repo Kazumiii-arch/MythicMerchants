@@ -2,17 +2,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.mythic</groupId>
     <artifactId>MythicMerchants</artifactId>
     <version>3.0.0</version>
     <packaging>jar</packaging>
+
     <name>MythicMerchants</name>
     <description>A complete, professional merchant solution with reputation, dynamic economy, and advanced spawning.</description>
+
+    <!--
+        THE IMPORTANT CHANGE IS HERE.
+        We are now explicitly setting the compiler source and target in the global properties.
+        This is the most reliable way to enforce the Java version.
+    -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- We keep this property, but the key change is in the plugin below -->
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
     <repositories>
         <repository>
             <id>spigot-repo</id>
@@ -27,6 +36,7 @@
             <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
     </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -47,20 +57,17 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>${project.name}-v${project.version}</finalName>
         <defaultGoal>clean package</defaultGoal>
         <plugins>
-            <!-- THIS SECTION IS THE IMPORTANT CHANGE -->
+            <!-- We no longer need to configure this plugin directly -->
+            <!-- It will automatically use the properties we set above. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <configuration>
-                    <!-- This 'release' tag is a more modern and reliable way -->
-                    <!-- to set the Java version than 'source' and 'target'. -->
-                    <release>17</release>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
