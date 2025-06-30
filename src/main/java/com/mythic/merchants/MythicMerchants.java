@@ -26,7 +26,6 @@ public class MythicMerchants extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        // Configuration setup
         saveDefaultConfig();
         File merchantsDir = new File(getDataFolder(), "merchants");
         if (!merchantsDir.exists()) merchantsDir.mkdirs();
@@ -35,10 +34,8 @@ public class MythicMerchants extends JavaPlugin {
         File dataDir = new File(getDataFolder(), "data");
         if (!dataDir.exists()) dataDir.mkdirs();
 
-        // Service setup
         setupEconomy();
 
-        // Manager initialization
         this.reputationManager = new ReputationManager(this);
         this.economyManager = new EconomyManager(this);
         this.merchantManager = new MerchantManager(this);
@@ -46,22 +43,18 @@ public class MythicMerchants extends JavaPlugin {
         this.tradeGUIManager = new GUIManager(this);
         this.tipManager = new TipManager(this);
 
-        // Command registration
         getCommand("merchantadmin").setExecutor(new AdminCommand(this));
         PlayerCommands playerCommands = new PlayerCommands(this);
         getCommand("reputation").setExecutor(playerCommands);
         getCommand("merchant").setExecutor(playerCommands);
 
-        // Event listener registration
         getServer().getPluginManager().registerEvents(new GUIListener(this), this);
         getServer().getPluginManager().registerEvents(new MerchantListener(this), this);
 
-        // Start scheduled tasks
         tipManager.startTipTask();
         merchantManager.startRandomSpawnTask();
         economyManager.startRestockTask();
         
-        // Load persistent data after a small delay to ensure all plugins are loaded
         getServer().getScheduler().runTaskLater(this, () -> merchantManager.loadPermanentMerchants(), 20L);
 
         getLogger().info("MythicMerchants v3.0.0 has been enabled!");
@@ -91,7 +84,6 @@ public class MythicMerchants extends JavaPlugin {
         return econ != null;
     }
 
-    // --- Getters ---
     public static MythicMerchants getInstance() { return instance; }
     public MerchantManager getMerchantManager() { return merchantManager; }
     public AdminGUIManager getAdminGUIManager() { return adminGUIManager; }
