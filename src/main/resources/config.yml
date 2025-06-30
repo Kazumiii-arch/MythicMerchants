@@ -1,0 +1,41 @@
+# Mythic Merchants v3.0 - Global Configuration
+reputation:
+  factions:
+    - "ARTISANS" # Smiths, builders, crafters
+    - "MYSTICS"  # Wizards, alchemists, enchanters
+    - "EXPLORERS" # Adventurers, traders, collectors
+  tiers:
+    HATED: -500
+    NEUTRAL: 0
+    FRIENDLY: 100
+    HONORED: 500
+    REVERED: 1000
+  points-per-trade: 1
+
+dynamic-economy:
+  enabled: true
+  tracked-items:
+    DIAMOND:
+      base-price: 100.0
+      min-price: 50.0
+      max-price: 500.0
+      volatility: 0.5
+    NETHERITE_INGOT:
+      base-price: 800.0
+      min-price: 400.0
+      max-price: 2000.0
+      volatility: 2.0
+    VORPAL_BLADE:
+      global-stock: 3
+      restock-interval: 86400
+
+server-tips:
+  enabled: true
+  interval: 600
+  prefix: "&e&l[TIP] &r&7"
+  messages:
+    - "Special merchants sometimes appear in the wild! Keep an eye on chat for announcements."
+    - "You can exchange server currency for &6Gold Coins&7 at the Banker in spawn."
+    - "Use &6/reputation&7 to check your standing with merchant factions!"
+    - "Higher reputation with a faction can unlock exclusive trades."
+    
