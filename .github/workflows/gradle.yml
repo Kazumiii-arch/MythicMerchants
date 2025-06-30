@@ -34,3 +34,4 @@ jobs:
           name: MythicMerchants-Plugin
           # The path to find the final .jar file
           path: build/libs/*.jar
+          
