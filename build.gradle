@@ -4,38 +4,40 @@ plugins {
 
 group = 'com.mythic'
 version = '3.0.0'
-description = 'A complete, professional merchant solution with reputation, dynamic economy, and advanced spawning.'
+description = 'A complete, professional merchant solution for Minecraft servers.'
 
-// Set the Java version
+// Set the Java version reliably
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
+// Define where to find the plugin dependencies
 repositories {
     mavenCentral()
-    // Add repositories for Spigot, Vault, and ProtocolLib
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
     maven { url = 'https://jitpack.io' }
     maven { url = 'https://repo.dmulloy2.net/repository/public/' }
 }
 
+// Define the plugin's dependencies
 dependencies {
-    // These dependencies are provided by the server, so we use 'compileOnly'
+    // We use 'compileOnly' because the server provides these files at runtime
     compileOnly 'org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     compileOnly 'com.comphenix.protocol:ProtocolLib:4.8.0'
 }
 
-// Set up the final JAR file name
-tasks.jar {
-    archiveBaseName.set(project.name)
-    archiveVersion.set(project.version)
-    archiveClassifier.set('')
+// This task ensures the final JAR is built correctly
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
-// Include resources like plugin.yml in the final JAR
+// This ensures your plugin.yml is processed correctly
 processResources {
-    from(sourceSets.main.resources.srcDirs) {
-        expand 'version': project.version
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
     }
 }
