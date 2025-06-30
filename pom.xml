@@ -9,7 +9,8 @@
     <name>MythicMerchants</name>
     <description>A complete, professional merchant solution with reputation, dynamic economy, and advanced spawning.</description>
     <properties>
-        <java.version>1.17</java.version>
+        <!-- The corrected Java version. Changed from 1.17 to 17 -->
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <repositories>
