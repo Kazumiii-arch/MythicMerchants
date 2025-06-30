@@ -1,0 +1,18 @@
+settings:
+  display-name: '&6&lBanker'
+  entity-type: VILLAGER
+  villager-profession: LIBRARIAN
+  is-stationary: true
+  invulnerable: true
+trade-pool:
+  buy_one_coin:
+    cost: ['VAULT:100']
+    result-item: "rO0ABXNyABpvcmcuYnVra2l0LnV0aWwuaW8uWrapperio/1bInp6kHAgABTAADbWFwdAAPTGphdmEvdXRpbC9NYXA7eHBzcgAdb3JnLmJ1a2tpdC5pbnZlbnRvcnkuSXRlbU1ldGG9cQ+kCCVvUwMAAUpAAgh2ZXJzaW9uWwAOTWV0YV9pbnRlcm5hbHI+W0xqYXZhL2xhbmcvU3RyaW5nO1hAAAAAAAABdXIAE1tMamF2YS5sYW5nLlN0cmluZzutjZ2I/jd0AgAAeHAAAAAAdAALZGlzcGxheS1uYW1ldAAOIztGIEcgT2wgZCBDb2ludAAEbG9yZXNyABFqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAABdwQAAAABdAAdIztHIFRoZSBvZmZpY2lhbCBjdXJyZW5jeSBvZiB0aGUgTGFuZHhzcQB+AAgAAAAAdAAKZ29sZF9udWdnZXQ="
+    stock: -1
+    chance: 1.0
+  sell_one_coin:
+    cost: ['CUSTOM_CURRENCY:1']
+    result-item: "VAULT:90"
+    stock: -1
+    chance: 1.0
+    
