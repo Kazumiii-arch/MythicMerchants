@@ -101,8 +101,7 @@ public class EconomyManager {
                 if(trackedItems == null) return;
 
                 for(String key : trackedItems.getKeys(false)) {
-                    int restockInterval = trackedItems.getInt(key + ".restock-interval", -1);
-                    if(restockInterval > 0) {
+                    if (trackedItems.getInt(key + ".restock-interval", -1) > 0) {
                         int currentStock = globalStock.getOrDefault(key.toUpperCase(), 0);
                         int maxStock = trackedItems.getInt(key + ".global-stock");
                         if(currentStock < maxStock) {
@@ -111,7 +110,7 @@ public class EconomyManager {
                     }
                 }
             }
-        }.runTaskTimerAsynchronously(plugin, 20L * 300, 20L * 300); // Check every 5 minutes
+        }.runTaskTimerAsynchronously(plugin, 20L * 300, 20L * 300);
     }
 
     public int getGlobalStock(String itemId) {
@@ -122,6 +121,20 @@ public class EconomyManager {
         String key = itemId.toUpperCase();
         if(globalStock.containsKey(key)) {
             globalStock.put(key, Math.max(0, globalStock.get(key) - 1));
+        }
+    }
+
+    public void updatePriceOnBuy(String itemId) {
+        String key = itemId.toUpperCase();
+        if(currentPrices.containsKey(key)) {
+            double currentPrice = currentPrices.get(key);
+            ConfigurationSection itemConfig = plugin.getConfig().getConfigurationSection("dynamic-economy.tracked-items." + key);
+            if(itemConfig != null) {
+                double volatility = itemConfig.getDouble("volatility", 0);
+                double maxPrice = itemConfig.getDouble("max-price");
+                double newPrice = Math.min(maxPrice, currentPrice + volatility);
+                currentPrices.put(key, newPrice);
+            }
         }
     }
 }
