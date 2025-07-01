@@ -23,7 +23,7 @@ public class ReputationManager {
         this.plugin = plugin;
         reload();
     }
-
+    
     public void reload() {
         setupFiles();
         loadTiers();
@@ -32,9 +32,8 @@ public class ReputationManager {
 
     private void setupFiles() {
         File dataDir = new File(plugin.getDataFolder(), "data");
-        if (!dataDir.exists()) {
-            dataDir.mkdirs();
-        }
+        if (!dataDir.exists()) dataDir.mkdirs();
+        
         playerDataFile = new File(dataDir, "playerdata.yml");
         if (!playerDataFile.exists()) {
             try {
@@ -45,11 +44,11 @@ public class ReputationManager {
         }
         playerDataConfig = YamlConfiguration.loadConfiguration(playerDataFile);
     }
-
+    
     private void loadTiers() {
         tierThresholds.clear();
         ConfigurationSection tierSection = plugin.getConfig().getConfigurationSection("reputation.tiers");
-        if (tierSection != null) {
+        if(tierSection != null) {
             tierSection.getValues(false).entrySet().stream()
                 .sorted(Map.Entry.<String, Object>comparingByValue().reversed())
                 .forEach(entry -> tierThresholds.put(entry.getKey().toUpperCase(), (Integer) entry.getValue()));
@@ -78,7 +77,6 @@ public class ReputationManager {
     }
 
     public void saveData() {
-        // Clear previous data to avoid artifacts
         playerDataConfig.set("players", null);
         for (Map.Entry<UUID, Map<String, Integer>> playerEntry : reputationCache.entrySet()) {
             for (Map.Entry<String, Integer> repEntry : playerEntry.getValue().entrySet()) {
@@ -91,37 +89,38 @@ public class ReputationManager {
             plugin.getLogger().log(Level.SEVERE, "Could not save player data to playerdata.yml", e);
         }
     }
-
+    
     public Map<String, Integer> getPlayerReputationMap(UUID uuid) {
         return reputationCache.getOrDefault(uuid, new HashMap<>());
     }
 
     public int getReputation(UUID uuid, String faction) {
+        if (faction == null) return 0;
         return reputationCache.getOrDefault(uuid, Collections.emptyMap()).getOrDefault(faction.toUpperCase(), 0);
     }
-
+    
     public void addReputation(UUID uuid, String faction, int amount) {
-        if (faction == null || faction.isEmpty()) return;
+        if(faction == null || faction.isEmpty()) return;
         Map<String, Integer> playerReps = reputationCache.computeIfAbsent(uuid, k -> new HashMap<>());
         int currentRep = playerReps.getOrDefault(faction.toUpperCase(), 0);
         playerReps.put(faction.toUpperCase(), currentRep + amount);
     }
-
+    
     public String getTier(int reputationPoints) {
-        for (Map.Entry<String, Integer> entry : tierThresholds.entrySet()) {
-            if (reputationPoints >= entry.getValue()) {
+        for(Map.Entry<String, Integer> entry : tierThresholds.entrySet()) {
+            if(reputationPoints >= entry.getValue()) {
                 return entry.getKey();
             }
         }
-        return "NEUTRAL"; // Fallback tier
+        return "NEUTRAL";
     }
 
     public boolean hasRequiredReputation(Player player, String faction, String requiredTierName) {
         if (requiredTierName == null || requiredTierName.isEmpty() || faction == null || faction.isEmpty()) {
-            return true; // No requirement, so they pass
+            return true;
         }
         int playerRep = getReputation(player.getUniqueId(), faction);
         int requiredPoints = tierThresholds.getOrDefault(requiredTierName.toUpperCase(), Integer.MAX_VALUE);
         return playerRep >= requiredPoints;
     }
-}
+            }
